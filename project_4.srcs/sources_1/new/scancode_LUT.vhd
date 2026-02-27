@@ -45,10 +45,8 @@ shift_map : process( make_code )
 begin 
   case make_code is 
   when x"66" => ascii <= x"08";  -- Backspace ("backspace" key) 
-  when x"0d" => ascii <= x"09";  -- Horizontal Tab 
   when x"5a" => ascii <= x"0d";  -- Carriage return ("enter" key) 
   when x"76" => ascii <= x"1b";  -- Escape ("esc" key) 
-  when x"29" => ascii <= x"20";  -- Space 
   when x"1c" => ascii <= x"61";  -- a 
   when x"32" => ascii <= x"62";  -- b 
   when x"21" => ascii <= x"63";  -- c 
@@ -75,7 +73,6 @@ begin
   when x"22" => ascii <= x"78";  -- x 
   when x"35" => ascii <= x"79";  -- y 
   when x"1a" => ascii <= x"7a";  -- z 
-  when x"71" => ascii <= x"7f";  -- (Delete OR DEL on numeric keypad) 
   when others => ascii <= x"00";  -- 0xff used for unlisted characters. 
   end case; 
 end process; 
