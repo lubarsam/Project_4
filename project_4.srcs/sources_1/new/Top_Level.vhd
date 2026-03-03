@@ -44,7 +44,7 @@ architecture Behavioral of Top_Level is
 
 component clock is
 generic(
-    MAX: unsigned (20 downto 0) := "111000010000000000000"
+    MAX: unsigned (7 downto 0) := "01000000"
 );
 
 port(
@@ -108,16 +108,23 @@ signal rxclk		: std_logic;
 
 begin
 
-inst_txclk_gen : clock
-	generic map (
-		MAX	=> "000011100001000000000"
-		)
+	inst_txclk_gen : clock
 	port map (
 	clock50M		=> iClk,
 	reset			=> reset,
 	sw_interlock	=> '0',
-	sw				=> sw,
+	sw				=> "1101101",
 	clk				=> txclk,
+	clkn			=> open
+	);
+
+inst_rxclk_gen : clock
+	port map (
+	clock50M		=> iClk,
+	reset			=> reset,
+	sw_interlock	=> '0',
+	sw				=> "0000111",
+	clk				=> rxclk,
 	clkn			=> open
 	);
 
