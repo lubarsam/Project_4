@@ -21,7 +21,7 @@
 
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
-
+use IEEE.numeric_std.all;
 -- Uncomment the following library declaration if using
 -- arithmetic functions with Signed or Unsigned values
 --use IEEE.NUMERIC_STD.ALL;
@@ -34,12 +34,30 @@ use IEEE.STD_LOGIC_1164.ALL;
 entity Top_Level is
   Port (
   iClk		: in std_logic;
+  reset		: in std_logic;
   ascii		: out std_logic_vector (7 downto 0)
   
   );
 end Top_Level;
 
 architecture Behavioral of Top_Level is
+
+component clock is
+generic(
+    MAX: unsigned (20 downto 0) := "111000010000000000000"
+);
+
+port(
+    clock50M: in std_logic;    --internal clock input
+    reset:     in std_logic;
+    sw_interlock:    in std_logic;
+    sw:    in    std_logic_vector (6 downto 0);
+    
+    clk:    out std_logic;
+    clkn:    out std_logic
+
+);
+end component;
 
 component ps2_keyboard IS
   GENERIC(
@@ -59,11 +77,50 @@ component scancode_LUT is
   ascii			: out std_logic_vector (7 downto 0)
   );
 end component;
+
+component uart is
+    port (
+        reset       :in  std_logic;
+        txclk       :in  std_logic;
+        ld_tx_data  :in  std_logic;
+        tx_data     :in  std_logic_vector (7 downto 0);
+        tx_enable   :in  std_logic;
+        tx_out      :out std_logic;
+        tx_empty    :out std_logic;
+        rxclk       :in  std_logic;
+        uld_rx_data :in  std_logic;
+        rx_data     :out std_logic_vector (7 downto 0);
+        rx_enable   :in  std_logic;
+        rx_in       :in  std_logic;
+        rx_empty    :out std_logic
+    );
+end component;
+
 signal make_code : std_logic_vector (7 downto 0);
 signal ps2_data  : std_logic;
 signal ps2_clk	 : std_logic;
 signal ps2_code_new : std_logic;
+signal txclk		: std_logic;
+signal txcnt_en		: std_logic;
+signal txclk_en		: std_logic;
+signal rxclk		: std_logic;
+
+
 begin
+
+inst_txclk_gen : clock
+	generic map (
+		MAX	=> "000011100001000000000"
+		)
+	port map (
+	clock50M		=> iClk,
+	reset			=> reset,
+	sw_interlock	=> '0',
+	sw				=> sw,
+	clk				=> txclk,
+	clkn			=> open
+	);
+
 inst_scancode_LUT : scancode_LUT
 	port map(
 	make_code	=> make_code,
@@ -79,4 +136,20 @@ inst_ps2_keyboard : ps2_keyboard
 	ps2_code		=> make_code
 	);
 
+inst_uart : uart
+	port map (
+	reset			=> reset,
+	txclk			=> txclk,
+	ld_tx_data		=>,
+	tx_data			=>,
+	tx_enable		=>,
+	tx_out			=>,
+	tx_empty		=>,
+	rxclk			=>,
+	uld_rx_data		=>,
+	rx_data			=>,
+	rx_enable		=>,
+	rx_in			=>,
+	rx_empty		=>
+	);
 end Behavioral;
