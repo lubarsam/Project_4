@@ -138,18 +138,18 @@ inst_ps2_keyboard : ps2_keyboard
 
 inst_uart : uart
 	port map (
-	reset			=> reset,
-	txclk			=> txclk,
-	ld_tx_data		=>,
-	tx_data			=>,
-	tx_enable		=>,
-	tx_out			=>,
-	tx_empty		=>,
-	rxclk			=>,
-	uld_rx_data		=>,
-	rx_data			=>,
-	rx_enable		=>,
-	rx_in			=>,
-	rx_empty		=>
-	);
+	reset		=> reset,
+	txclk		=> txclk,
+    ld_tx_data  => '1',
+    tx_data     => ascii_data_ps2,
+    tx_enable   => ascii_new
+    tx_out      => usb_rx,
+    tx_empty    => open,
+    rxclk       => rx_clken,
+    uld_rx_data => '1',
+    rx_data     => uart_rx_data,
+    rx_enable   => '1',
+    rx_in       => usb_tx,
+    rx_empty    => rx_empty
+);
 end Behavioral;
