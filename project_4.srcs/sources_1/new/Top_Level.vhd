@@ -152,7 +152,7 @@ inst_uart : uart
     tx_enable   => ascii_new
     tx_out      => usb_rx,
     tx_empty    => open,
-    rxclk       => rx_clken,
+    rxclk       => rxclk,
     uld_rx_data => '1',
     rx_data     => uart_rx_data,
     rx_enable   => '1',
