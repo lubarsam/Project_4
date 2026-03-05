@@ -12,6 +12,8 @@ lives = 6
 
 from hangman_art import logo
 from hangman_art import welcome
+from hangman_art import gameover
+from hangman_art import win
 print(welcome)
 print(logo)
 
@@ -36,13 +38,13 @@ while not gameEnd:
         print(f"{guess} is not in the word.  You lose a life.")
         if lives == 0:
             gameEnd = True
-            print("You lose.")
+            print(gameover)
 
     print(f"{' '.join(display)}")
 
     if "_" not in display:
         gameEnd = True
-        print("You win.")
+        print(win)
 
     from hangman_art import stages
     print(stages[lives])
