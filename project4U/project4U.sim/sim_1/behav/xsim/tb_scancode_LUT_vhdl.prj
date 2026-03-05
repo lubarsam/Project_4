@@ -1,7 +1,0 @@
-# compile vhdl design source files
-vhdl xil_defaultlib  \
-"../../../../project_4.srcs/sources_1/new/scancode_LUT.vhd" \
-"../../../../project_4.srcs/sim_1/new/tb_scancode_LUT.vhd" \
-
-# Do not sort compile order
-nosort

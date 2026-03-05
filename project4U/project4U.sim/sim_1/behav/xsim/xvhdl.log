@@ -1,4 +1,0 @@
-INFO: [VRFC 10-163] Analyzing VHDL file "C:/Users/drewl/Desktop/EE316/Project_4/project_4.srcs/sources_1/new/scancode_LUT.vhd" into library xil_defaultlib
-INFO: [VRFC 10-3107] analyzing entity 'scancode_LUT'
-INFO: [VRFC 10-163] Analyzing VHDL file "C:/Users/drewl/Desktop/EE316/Project_4/project_4.srcs/sim_1/new/tb_scancode_LUT.vhd" into library xil_defaultlib
-INFO: [VRFC 10-3107] analyzing entity 'tb_scancode_LUT'
