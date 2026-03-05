@@ -1,7 +1,0 @@
-Running: xsim.dir/ps2_keyboard_behav/xsimk.exe -simmode gui -wdb ps2_keyboard_behav.wdb -simrunnum 0 -socket 59133
-Design successfully loaded
-Design Loading Memory Usage: 10648 KB (Peak: 10648 KB)
-Design Loading CPU Usage: 46 ms
-Simulation completed
-Simulation Memory Usage: 11108 KB (Peak: 11108 KB)
-Simulation CPU Usage: 62 ms
