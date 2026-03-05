@@ -1,0 +1,283 @@
+/*
+
+Xilinx Vivado v2019.1 (64-bit) [Major: 2019, Minor: 1]
+SW Build: 2552052 on Fri May 24 14:49:42 MDT 2019
+IP Build: 2548770 on Fri May 24 18:01:18 MDT 2019
+
+Process ID (PID): 3304
+License: Customer
+
+Current time: 	Thu Mar 05 14:07:56 EST 2026
+Time zone: 	Eastern Standard Time (America/New_York)
+
+OS: Windows 10
+OS Version: 10.0
+OS Architecture: amd64
+Available processors (cores): 12
+
+Screen size: 1920x1080
+Screen resolution (DPI): 100
+Available screens: 1
+Available disk space: 144 GB
+Default font: family=Dialog,name=Dialog,style=plain,size=12
+
+Java version: 	9.0.4 64-bit
+Java home: 	C:/Xilinx/Vivado/2019.1/tps/win64/jre9.0.4
+Java executable location: 	C:/Xilinx/Vivado/2019.1/tps/win64/jre9.0.4/bin/java.exe
+Java initial memory (-Xms): 	128 MB
+Java maximum memory (-Xmx):	 3 GB
+
+
+User name: 	mulcahcd
+User home directory: C:/Users/mulcahcd
+User working directory: D:/Jr Lab/Project 4/3-5/project4U
+User country: 	US
+User language: 	en
+User locale: 	en_US
+
+RDI_BASEROOT: C:/Xilinx/Vivado
+HDI_APPROOT: C:/Xilinx/Vivado/2019.1
+RDI_DATADIR: C:/Xilinx/Vivado/2019.1/data
+RDI_BINDIR: C:/Xilinx/Vivado/2019.1/bin
+
+Vivado preferences file location: C:/Users/mulcahcd/AppData/Roaming/Xilinx/Vivado/2019.1/vivado.xml
+Vivado preferences directory: C:/Users/mulcahcd/AppData/Roaming/Xilinx/Vivado/2019.1/
+Vivado layouts directory: C:/Users/mulcahcd/AppData/Roaming/Xilinx/Vivado/2019.1/layouts
+PlanAhead jar file location: 	C:/Xilinx/Vivado/2019.1/lib/classes/planAhead.jar
+Vivado log file location: 	D:/Jr Lab/Project 4/3-5/project4U/vivado.log
+Vivado journal file location: 	D:/Jr Lab/Project 4/3-5/project4U/vivado.jou
+Engine tmp dir: 	D:/Jr Lab/Project 4/3-5/project4U/.Xil/Vivado-3304-CB195-UL-31
+
+Xilinx Environment Variables
+----------------------------
+XILINX: C:/Xilinx/Vivado/2019.1/ids_lite/ISE
+XILINXD_LICENSE_FILE: 2100@lic-xilinx.ad.clarkson.edu
+XILINX_DSP: C:/Xilinx/Vivado/2019.1/ids_lite/ISE
+XILINX_PLANAHEAD: C:/Xilinx/Vivado/2019.1
+XILINX_SDK: C:/Xilinx/SDK/2019.1
+XILINX_VIVADO: C:/Xilinx/Vivado/2019.1
+XILINX_VIVADO_HLS: C:/Xilinx/Vivado/2019.1
+{AFE31803-E4A3-4B8F-8E74-02E39BBCF147}_XILINXD_LICENSE_FILE: 2100@lic-xilinx.ad.clarkson.edu
+
+
+GUI allocated memory:	185 MB
+GUI max memory:		3,072 MB
+Engine allocated memory: 718 MB
+
+Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
+
+*/
+
+// TclEventType: START_GUI
+// Tcl Message: start_gui 
+// TclEventType: PROJECT_OPEN_DIALOG
+// by (cl):  Open Project : addNotify
+// Opening Vivado Project: D:\Jr Lab\Project 4\3-5\project4U\project4U.xpr. Version: Vivado v2019.1 
+// TclEventType: DEBUG_PROBE_SET_CHANGE
+// Tcl Message: open_project {D:/Jr Lab/Project 4/3-5/project4U/project4U.xpr} 
+// TclEventType: MSGMGR_MOVEMSG
+// TclEventType: FILE_SET_NEW
+// TclEventType: RUN_FAILED
+// TclEventType: RUN_STATUS_CHANGE
+// TclEventType: RUN_CURRENT
+// TclEventType: PROJECT_DASHBOARD_NEW
+// TclEventType: PROJECT_DASHBOARD_GADGET_NEW
+// TclEventType: PROJECT_DASHBOARD_GADGET_CHANGE
+// TclEventType: PROJECT_DASHBOARD_GADGET_NEW
+// TclEventType: PROJECT_DASHBOARD_GADGET_CHANGE
+// TclEventType: PROJECT_DASHBOARD_GADGET_NEW
+// TclEventType: PROJECT_DASHBOARD_GADGET_CHANGE
+// TclEventType: PROJECT_DASHBOARD_GADGET_NEW
+// TclEventType: PROJECT_DASHBOARD_GADGET_CHANGE
+// TclEventType: PROJECT_DASHBOARD_GADGET_NEW
+// TclEventType: PROJECT_DASHBOARD_GADGET_CHANGE
+// TclEventType: PROJECT_DASHBOARD_GADGET_NEW
+// TclEventType: PROJECT_DASHBOARD_GADGET_CHANGE
+// TclEventType: PROJECT_NEW
+// Tcl Message: open_project {D:/Jr Lab/Project 4/3-5/project4U/project4U.xpr} 
+// Tcl Message: Scanning sources... Finished scanning sources 
+// Tcl Message: INFO: [IP_Flow 19-234] Refreshing IP repositories INFO: [IP_Flow 19-1704] No user IP repositories specified 
+// TclEventType: PROJECT_NEW
+// [GUI Memory]: 95 MB (+97443kb) [00:00:08]
+// [Engine Memory]: 701 MB (+583051kb) [00:00:08]
+// [GUI Memory]: 112 MB (+12010kb) [00:00:08]
+// WARNING: HEventQueue.dispatchEvent() is taking  1985 ms.
+// Tcl Message: INFO: [IP_Flow 19-2313] Loaded Vivado IP repository 'C:/Xilinx/Vivado/2019.1/data/ip'. 
+// HMemoryUtils.trashcanNow. Engine heap size: 729 MB. GUI used memory: 53 MB. Current time: 3/5/26, 2:07:57 PM EST
+// Project name: project4U; location: D:/Jr Lab/Project 4/3-5/project4U; part: xc7z007sclg400-1
+dismissDialog("Open Project"); // by (cl)
+// a (cl): Critical Messages: addNotify
+// Tcl Message: update_compile_order -fileset sources_1 
+selectButton(PAResourceAtoD.CmdMsgDialog_OK, "OK"); // f (a)
+dismissDialog("Critical Messages"); // a (cl)
+// [Engine Memory]: 736 MB (+226kb) [00:00:16]
+expandTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Design Sources, Top_Level(Behavioral) (Top_Level.vhd)]", 3); // B (F, cl)
+expandTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Design Sources, Non-module Files]", 2); // B (F, cl)
+selectTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Design Sources, Non-module Files, debounce.vhd]", 3, false); // B (F, cl)
+selectTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Design Sources, Non-module Files, debounce.vhd]", 3, false, false, false, false, true, false); // B (F, cl) - Popup Trigger
+selectMenuItem(RDIResourceCommand.RDICommands_DELETE, "Remove File from Project..."); // ah (an, cl)
+// Run Command: RDIResourceCommand.RDICommands_DELETE
+// aE (cl): Remove Sources: addNotify
+selectButton(RDIResource.BaseDialog_OK, "OK"); // a (aE)
+dismissDialog("Remove Sources"); // aE (cl)
+// Tcl Message: export_ip_user_files -of_objects  [get_files {{D:/Jr Lab/Project 4/debounce/debounce.vhd}}] -no_script -reset -force -quiet 
+// TclEventType: DG_GRAPH_STALE
+// TclEventType: FILE_SET_CHANGE
+// Tcl Message: remove_files  {{D:/Jr Lab/Project 4/debounce/debounce.vhd}} 
+// Elapsed time: 12 seconds
+selectButton(PAResourceCommand.PACommandNames_ADD_SOURCES, "Sources_add_sources"); // B (f, cl)
+// Run Command: PAResourceCommand.PACommandNames_ADD_SOURCES
+// c (cl): Add Sources: addNotify
+selectButton("NEXT", "Next >"); // JButton (j, c)
+selectButton(PAResourceQtoS.SrcChooserPanel_ADD_HDL_AND_NETLIST_FILES_TO_YOUR_PROJECT, "Add Files"); // a (E, c)
+setFileChooser("D:/Jr Lab/Project 4/debounce/btn_debounce.vhd");
+// HMemoryUtils.trashcanNow. Engine heap size: 752 MB. GUI used memory: 55 MB. Current time: 3/5/26, 2:08:31 PM EST
+selectButton("FINISH", "Finish"); // JButton (j, c)
+// 'h' command handler elapsed time: 9 seconds
+// TclEventType: DG_GRAPH_STALE
+dismissDialog("Add Sources"); // c (cl)
+// TclEventType: FILE_SET_CHANGE
+// Tcl Message: add_files -norecurse {{D:/Jr Lab/Project 4/debounce/btn_debounce.vhd}} 
+// TclEventType: DG_GRAPH_STALE
+// TclEventType: FILE_SET_CHANGE
+// Tcl Message: update_compile_order -fileset sources_1 
+selectTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Design Sources, Top_Level(Behavioral) (Top_Level.vhd)]", 2, true); // B (F, cl) - Node
+selectTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Design Sources, Top_Level(Behavioral) (Top_Level.vhd)]", 2, true, false, false, false, false, true); // B (F, cl) - Double Click - Node
+selectTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Design Sources, btn_debounce_toggle(Behavioral) (btn_debounce.vhd)]", 3, false); // B (F, cl)
+selectTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Design Sources, btn_debounce_toggle(Behavioral) (btn_debounce.vhd)]", 3, false, false, false, false, false, true); // B (F, cl) - Double Click
+// Elapsed time: 42 seconds
+selectTab("PlanAheadTabBaseWorkspace_JideTabbedPane", (HResource) null, "Top_Level.vhd", 1); // k (j, cl)
+// Elapsed time: 19 seconds
+selectCodeEditor("Top_Level.vhd", 352, 194); // cl (w, cl)
+// Elapsed time: 27 seconds
+selectCodeEditor("Top_Level.vhd", 352, 194); // cl (w, cl)
+selectCodeEditor("Top_Level.vhd", 190, 215); // cl (w, cl)
+typeControlKey((HResource) null, "Top_Level.vhd", 'c'); // cl (w, cl)
+selectCodeEditor("Top_Level.vhd", 216, 221); // cl (w, cl)
+selectCodeEditor("Top_Level.vhd", 193, 214); // cl (w, cl)
+typeControlKey((HResource) null, "Top_Level.vhd", 'v'); // cl (w, cl)
+selectCodeEditor("Top_Level.vhd", 51, 233); // cl (w, cl)
+selectCodeEditor("Top_Level.vhd", 104, 237); // cl (w, cl)
+selectCodeEditor("Top_Level.vhd", 227, 229); // cl (w, cl)
+// Elapsed time: 16 seconds
+selectCodeEditor("Top_Level.vhd", 105, 305); // cl (w, cl)
+// Elapsed time: 14 seconds
+selectCodeEditor("Top_Level.vhd", 103, 321); // cl (w, cl)
+// Elapsed time: 12 seconds
+selectButton(RDIResourceCommand.RDICommands_SAVE_FILE, (String) null); // B (f, cl)
+// TclEventType: DG_GRAPH_STALE
+// TclEventType: FILE_SET_CHANGE
+// Elapsed time: 36 seconds
+selectCodeEditor("Top_Level.vhd", 117, 131); // cl (w, cl)
+typeControlKey((HResource) null, "Top_Level.vhd", 'c'); // cl (w, cl)
+selectCodeEditor("Top_Level.vhd", 72, 472); // cl (w, cl)
+typeControlKey((HResource) null, "Top_Level.vhd", 'v'); // cl (w, cl)
+selectCodeEditor("Top_Level.vhd", 126, 126); // cl (w, cl)
+// Elapsed time: 53 seconds
+selectCodeEditor("Top_Level.vhd", 566, 311); // cl (w, cl)
+selectCodeEditor("Top_Level.vhd", 321, 334); // cl (w, cl)
+// Elapsed time: 28 seconds
+selectCodeEditor("Top_Level.vhd", 251, 283); // cl (w, cl)
+// Elapsed time: 53 seconds
+selectCodeEditor("Top_Level.vhd", 452, 148); // cl (w, cl)
+// Elapsed time: 29 seconds
+expandTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Design Sources, Top_Level(Behavioral) (Top_Level.vhd)]", 2); // B (F, cl)
+selectTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Design Sources, Top_Level(Behavioral) (Top_Level.vhd), inst_txclk_gen : clock(Behavioral) (clock_gen.vhd)]", 3, false); // B (F, cl)
+selectTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Design Sources, Top_Level(Behavioral) (Top_Level.vhd), inst_txclk_gen : clock(Behavioral) (clock_gen.vhd)]", 3, false, false, false, false, false, true); // B (F, cl) - Double Click
+// Elapsed time: 87 seconds
+selectTab("PlanAheadTabBaseWorkspace_JideTabbedPane", (HResource) null, "Top_Level.vhd", 1); // k (j, cl)
+selectCodeEditor("Top_Level.vhd", 98, 228); // cl (w, cl)
+// Elapsed time: 30 seconds
+selectTab("PlanAheadTabBaseWorkspace_JideTabbedPane", (HResource) null, "btn_debounce.vhd", 2); // k (j, cl)
+// Elapsed time: 11 seconds
+selectCodeEditor("btn_debounce.vhd", 191, 356); // cl (w, cl)
+typeControlKey((HResource) null, "btn_debounce.vhd", 'c'); // cl (w, cl)
+selectTab("PlanAheadTabBaseWorkspace_JideTabbedPane", (HResource) null, "Top_Level.vhd", 1); // k (j, cl)
+typeControlKey((HResource) null, "Top_Level.vhd", 'v'); // cl (w, cl)
+selectCodeEditor("Top_Level.vhd", 161, 387); // cl (w, cl)
+selectCodeEditor("Top_Level.vhd", 395, 435); // cl (w, cl)
+// Elapsed time: 72 seconds
+selectCodeEditor("Top_Level.vhd", 29, 285); // cl (w, cl)
+selectCodeEditor("Top_Level.vhd", 20, 298); // cl (w, cl)
+// Elapsed time: 44 seconds
+selectCodeEditor("Top_Level.vhd", 267, 320); // cl (w, cl)
+// Elapsed time: 96 seconds
+selectCodeEditor("Top_Level.vhd", 195, 397); // cl (w, cl)
+selectCodeEditor("Top_Level.vhd", 129, 413); // cl (w, cl)
+// Elapsed time: 19 seconds
+selectCodeEditor("Top_Level.vhd", 150, 385); // cl (w, cl)
+// Elapsed time: 38 seconds
+selectCodeEditor("Top_Level.vhd", 158, 417); // cl (w, cl)
+// HMemoryUtils.trashcanNow. Engine heap size: 772 MB. GUI used memory: 58 MB. Current time: 3/5/26, 2:22:41 PM EST
+// Elapsed time: 78 seconds
+selectCodeEditor("Top_Level.vhd", 54, 314); // cl (w, cl)
+// Elapsed time: 29 seconds
+selectButton(RDIResourceCommand.RDICommands_SAVE_FILE, (String) null); // B (f, cl)
+// TclEventType: DG_GRAPH_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: DG_GRAPH_STALE
+// TclEventType: FILE_SET_CHANGE
+// Tcl Message: update_compile_order -fileset sources_1 
+// Elapsed time: 84 seconds
+selectCodeEditor("Top_Level.vhd", 248, 322); // cl (w, cl)
+typeControlKey((HResource) null, "Top_Level.vhd", 'c'); // cl (w, cl)
+selectCodeEditor("Top_Level.vhd", 270, 321); // cl (w, cl)
+typeControlKey((HResource) null, "Top_Level.vhd", 'v'); // cl (w, cl)
+selectCodeEditor("Top_Level.vhd", 102, 384); // cl (w, cl)
+selectCodeEditor("Top_Level.vhd", 253, 428); // cl (w, cl)
+selectCodeEditor("Top_Level.vhd", 129, 383); // cl (w, cl)
+selectCodeEditor("Top_Level.vhd", 236, 449); // cl (w, cl)
+selectCodeEditor("Top_Level.vhd", 261, 387); // cl (w, cl)
+// Elapsed time: 26 seconds
+selectCodeEditor("Top_Level.vhd", 242, 250); // cl (w, cl)
+typeControlKey((HResource) null, "Top_Level.vhd", 'c'); // cl (w, cl)
+selectCodeEditor("Top_Level.vhd", 243, 251); // cl (w, cl)
+typeControlKey((HResource) null, "Top_Level.vhd", 'v'); // cl (w, cl)
+selectCodeEditor("Top_Level.vhd", 60, 267); // cl (w, cl)
+// Elapsed time: 73 seconds
+selectCodeEditor("Top_Level.vhd", 398, 184); // cl (w, cl)
+typeControlKey((HResource) null, "Top_Level.vhd", 'c'); // cl (w, cl)
+selectCodeEditor("Top_Level.vhd", 270, 333); // cl (w, cl)
+typeControlKey((HResource) null, "Top_Level.vhd", 'v'); // cl (w, cl)
+// Elapsed time: 92 seconds
+selectCodeEditor("Top_Level.vhd", 86, 182); // cl (w, cl)
+selectCodeEditor("Top_Level.vhd", 662, 191); // cl (w, cl)
+selectCodeEditor("Top_Level.vhd", 131, 214); // cl (w, cl)
+selectCodeEditor("Top_Level.vhd", 182, 230); // cl (w, cl)
+typeControlKey((HResource) null, "Top_Level.vhd", 'c'); // cl (w, cl)
+selectCodeEditor("Top_Level.vhd", 242, 251); // cl (w, cl)
+typeControlKey((HResource) null, "Top_Level.vhd", 'c'); // cl (w, cl)
+selectCodeEditor("Top_Level.vhd", 246, 243); // cl (w, cl)
+typeControlKey((HResource) null, "Top_Level.vhd", 'v'); // cl (w, cl)
+selectCodeEditor("Top_Level.vhd", 122, 269); // cl (w, cl)
+typeControlKey((HResource) null, "Top_Level.vhd", 'v'); // cl (w, cl)
+typeControlKey(null, null, 'z');
+selectCodeEditor("Top_Level.vhd", 182, 232); // cl (w, cl)
+typeControlKey((HResource) null, "Top_Level.vhd", 'c'); // cl (w, cl)
+selectCodeEditor("Top_Level.vhd", 119, 183); // cl (w, cl)
+selectCodeEditor("Top_Level.vhd", 47, 175); // cl (w, cl)
+selectCodeEditor("Top_Level.vhd", 95, 176); // cl (w, cl)
+selectCodeEditor("Top_Level.vhd", 95, 176, false, false, false, false, true); // cl (w, cl) - Double Click
+typeControlKey((HResource) null, "Top_Level.vhd", 'v'); // cl (w, cl)
+selectCodeEditor("Top_Level.vhd", 157, 179); // cl (w, cl)
+// Elapsed time: 32 seconds
+selectCodeEditor("Top_Level.vhd", 248, 179); // cl (w, cl)
+selectCodeEditor("Top_Level.vhd", 248, 179); // cl (w, cl)
+selectCodeEditor("Top_Level.vhd", 18, 162); // cl (w, cl)
+selectCodeEditor("Top_Level.vhd", 9, 256); // cl (w, cl)
+// Elapsed time: 220 seconds
+selectButton(RDIResourceCommand.RDICommands_SAVE_FILE, (String) null); // B (f, cl)
+// TclEventType: DG_GRAPH_STALE
+// TclEventType: FILE_SET_CHANGE
+// [GUI Memory]: 118 MB (+708kb) [00:26:19]
+// Elapsed time: 55 seconds
+selectCodeEditor("Top_Level.vhd", 199, 279); // cl (w, cl)
+// Elapsed time: 26 seconds
+selectButton(RDIResourceCommand.RDICommands_SAVE_FILE, (String) null); // B (f, cl)
+// TclEventType: DG_GRAPH_STALE
+// TclEventType: FILE_SET_CHANGE
+// Elapsed time: 34 seconds
+selectCodeEditor("Top_Level.vhd", 328, 236); // cl (w, cl)
+// Elapsed time: 13 seconds
+expandTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Design Sources, Top_Level(Behavioral) (Top_Level.vhd), inst_keyboard : ps2_keyboard_to_ascii(behavior) (ps2_keyboard_to_ascii.vhd)]", 4); // B (F, cl)
+expandTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Design Sources, Top_Level(Behavioral) (Top_Level.vhd), inst_keyboard : ps2_keyboard_to_ascii(behavior) (ps2_keyboard_to_ascii.vhd), ps2_keyboard_0 : ps2_keyboard(logic) (ps2_keyboard.vhd)]", 5); // B (F, cl)
