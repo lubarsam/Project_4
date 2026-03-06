@@ -11,14 +11,14 @@ SERIAL_PORT  = "COM3"
 LCD_WIDTH    = 16       # visible characters on the LCD at once
 SCROLL_DELAY = 0.35     # seconds between scroll steps (adjust for comfortable reading)
 
-def find_serial_port()
+def find_serial_port():
     ports = serial.tools.list_ports.comports()
     for p in ports:
         if "USB" in p.description or "UART" in p.description or "Serial" in p.description:
             return p.device
     return ports[0].device if ports else None
 
-def open_serial(port: str | None = None)
+def open_serial(port: str | None = None):
     target = port or SERIAL_PORT or find_serial_port()
     if not target:
         print("[SERIAL] No serial port found – running without FPGA hardware.")
@@ -33,17 +33,17 @@ def open_serial(port: str | None = None)
         return None
 
 #  UART send helpers
-def send_lcd(ser: serial.Serial | None, text: str)
+def send_lcd(ser: serial.Serial | None, text: str):
     if ser and ser.is_open:
         frame = f"LCD:{text[:LCD_WIDTH]:<{LCD_WIDTH}}\n"
         ser.write(frame.encode("ascii"))
 
-def send_seg(ser: serial.Serial | None, value: int)
+def send_seg(ser: serial.Serial | None, value: int):
     if ser and ser.is_open:
         frame = f"SEG:{max(0, min(9, value))}\n"
         ser.write(frame.encode("ascii"))
 
-def scroll_lcd(ser: serial.Serial | None, message: str)
+def scroll_lcd(ser: serial.Serial | None, message: str):
     padded = (" " * LCD_WIDTH) + message + (" " * LCD_WIDTH)
     for i in range(len(padded) - LCD_WIDTH + 1):
         window = padded[i:i + LCD_WIDTH]
@@ -55,7 +55,7 @@ _ps2_buffer: list[str] = []
 _ps2_lock   = threading.Lock()
 _stop_event = threading.Event()
 
-def _ps2_reader_thread(ser: serial.Serial)
+def _ps2_reader_thread(ser: serial.Serial):
     leftover = ""
     while not _stop_event.is_set():
         try:
@@ -74,23 +74,23 @@ def _ps2_reader_thread(ser: serial.Serial)
         except Exception:
             time.sleep(0.01)
 
-def start_ps2_thread(ser: serial.Serial | None) -> threading.Thread | None:
+def start_ps2_thread(ser: serial.Serial | None):
     if ser is None:
         return None
     t = threading.Thread(target=_ps2_reader_thread, args=(ser,), daemon=True)
     t.start()
     return t
 
-def poll_ps2()
+def poll_ps2():
     with _ps2_lock:
         return _ps2_buffer.pop(0) if _ps2_buffer else None
 
-def clear_ps2_buffer()
+def clear_ps2_buffer():
     with _ps2_lock:
         _ps2_buffer.clear()
 
 #  Input helpers
-def get_guess(already_guessed: list[str])
+def get_guess(already_guessed: list[str]):
     while True:
         ps2 = poll_ps2()
         if ps2:
@@ -167,13 +167,13 @@ def get_yn(prompt: str):
                 print("Please type Y or N.")
 
 #  FPGA update helper
-def update_fpga(ser, display: list[str], lives: int)
+def update_fpga(ser, display: list[str], lives: int):
     send_lcd(ser, " ".join(display))
     send_seg(ser, lives)
 
 #  Single round of hangman
 #  Returns True if the word was guessed, False if the player lost.
-def play_round(ser, chosen_word: str, stages, gameover_art, win_art)
+def play_round(ser, chosen_word: str, stages, gameover_art, win_art):
     word_len      = len(chosen_word)
     lives         = 6
     display       = ["_"] * word_len
