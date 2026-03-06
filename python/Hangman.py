@@ -6,7 +6,7 @@ import time
 
 #  Serial / UART configuration
 BAUD_RATE    = 115200
-SERIAL_PORT  = "COM3"
+SERIAL_PORT  = "COM4"
 
 LCD_WIDTH    = 16       # visible characters on the LCD at once
 SCROLL_DELAY = 0.35     # seconds between scroll steps (adjust for comfortable reading)
