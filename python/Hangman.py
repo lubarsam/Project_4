@@ -5,7 +5,7 @@ import threading
 import time
 
 #  Serial / UART configuration
-BAUD_RATE    = 115200
+BAUD_RATE    = 9600
 SERIAL_PORT  = "COM4"
 
 LCD_WIDTH    = 16       # visible characters on the LCD at once
@@ -36,12 +36,14 @@ def open_serial(port: str | None = None):
 def send_lcd(ser: serial.Serial | None, text: str):
     if ser and ser.is_open:
         frame = f"LCD:{text[:LCD_WIDTH]:<{LCD_WIDTH}}\n"
-        ser.write(frame.encode("ascii"))
+        with _serial_lock:
+            ser.write(frame.encode("ascii"))
 
 def send_seg(ser: serial.Serial | None, value: int):
     if ser and ser.is_open:
         frame = f"SEG:{max(0, min(9, value))}\n"
-        ser.write(frame.encode("ascii"))
+        with _serial_lock:
+            ser.write(frame.encode("ascii"))
 
 def scroll_lcd(ser: serial.Serial | None, message: str):
     padded = (" " * LCD_WIDTH) + message + (" " * LCD_WIDTH)
@@ -53,20 +55,25 @@ def scroll_lcd(ser: serial.Serial | None, message: str):
 #  PS/2 keyboard reader
 _ps2_buffer: list[str] = []
 _ps2_lock   = threading.Lock()
+_serial_lock = threading.Lock()   # protects all serial port access
 _stop_event = threading.Event()
 
 def _ps2_reader_thread(ser: serial.Serial):
     leftover = ""
     while not _stop_event.is_set():
         try:
-            raw = ser.read(ser.in_waiting or 1)
+            with _serial_lock:
+                waiting = ser.in_waiting
+                raw = ser.read(waiting) if waiting else b""
             if not raw:
+                time.sleep(0.01)   # short sleep to avoid busy-spinning
                 continue
             leftover += raw.decode("ascii", errors="ignore")
             while "\n" in leftover:
                 line, leftover = leftover.split("\n", 1)
-                line = line.strip()
-                if line.startswith("KEY:") and len(line) == 5:
+                line = line.strip().rstrip("\r")   # handle \r\n line endings
+                print(f"[PS/2 RAW] '{line}'")      # debug: remove once working
+                if line.startswith("KEY:") and len(line) >= 5:
                     char = line[4].lower()
                     if char.isalpha():
                         with _ps2_lock:
