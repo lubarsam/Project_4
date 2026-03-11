@@ -25,9 +25,8 @@ USE ieee.std_logic_1164.all;
 
 ENTITY ps2_keyboard_to_ascii IS
   GENERIC(
-      clk_freq                  : INTEGER := 50_000_000; --system clock frequency in Hz
-      ps2_debounce_counter_size : INTEGER := 8
-      );         --set such that 2^size/clk_freq = 5us (size = 8 for 50MHz)
+      clk_freq                  : INTEGER := 125_000_000; --system clock frequency in Hz
+      ps2_debounce_counter_size : INTEGER := 9);         --set such that 2^size/clk_freq = 5us (size = 8 for 50MHz)
   PORT(
       clk        : IN  STD_LOGIC;                     --system clock input
       ps2_clk    : IN  STD_LOGIC;                     --clock signal from PS2 keyboard
@@ -315,6 +314,3 @@ BEGIN
   END PROCESS;
 
 END behavior;
-
-
-

@@ -18,11 +18,11 @@ ARCHITECTURE top OF top IS
 
 component uart IS
   GENERIC(
-    clk_freq  :  INTEGER    := 50_000_000;  --frequency of system clock in Hertz
+    clk_freq  :  INTEGER    := 125_000_000;  --frequency of system clock in Hertz
     baud_rate :  INTEGER    := 115_200;     --data link baud rate in bits/second
     os_rate   :  INTEGER    := 16;          --oversampling rate to find center of receive bits (in samples per baud period)
     d_width   :  INTEGER    := 8;           --data bus width
-    parity    :  INTEGER    := 1;           --0 for no parity, 1 for parity
+    parity    :  INTEGER    := 0;           --0 for no parity, 1 for parity
     parity_eo :  STD_LOGIC  := '0'          --'0' for even, '1' for odd parity
     );        
   PORT(
@@ -86,7 +86,7 @@ END component;
 
   COMPONENT i2c_manager IS
     GENERIC(
-      input_clk : INTEGER := 50_000_000;
+      input_clk : INTEGER := 125_000_000;
       bus_clk   : INTEGER := 100_000
     );
     PORT(
@@ -128,10 +128,9 @@ END component;
   SIGNAL ascii_new_signal   : STD_LOGIC;
   SIGNAL ascii_code_signal  : STD_LOGIC_VECTOR(7 DOWNTO 0);
   SIGNAL reset_n_i : STD_LOGIC;
+  SIGNAL Q0, Q1, send_pulse  : STD_LOGIC;
 
 BEGIN
-
--- temporary test: send 'A' (0x41) repeatedly with a slow counter
 
   reset_n_i <= NOT sys_reset_n;
   -- I2C mux
@@ -142,17 +141,17 @@ BEGIN
   
 uart_inst   : uart
   GENERIC MAP(
-    clk_freq  => 50_000_000,   --frequency of system clock in Hertz
+    clk_freq  => 125_000_000,   --frequency of system clock in Hertz
     baud_rate => 115_200,      --data link baud rate in bits/second
     os_rate   => 16,           --oversampling rate to find center of receive bits (in samples per baud period)
     d_width   => 8,            --data bus width
-    parity    => 1,            --0 for no parity, 1 for parity
-    parity_eo => '1'           --'0' for even, '1' for odd parity
+    parity    => 0,            --0 for no parity, 1 for parity
+    parity_eo => '0'           --'0' for even, '1' for odd parity
     )
   PORT MAP(
     clk      => clk,                --system clock
     reset_n  => reset_n_i,          --ascynchronous reset
-    tx_ena   => ascii_new_signal,   --initiate transmission
+    tx_ena   => send_pulse,   --initiate transmission
     tx_data  => ascii_code_signal,  --data to transmit
     rx       => '0',                --receive pin
     rx_busy  => open,               --data reception in progress
@@ -162,10 +161,19 @@ uart_inst   : uart
     tx       => uart_tx_pin
     );     
 
+process(clk)
+begin
+  if rising_edge(clk) then
+  Q0 <= ascii_new_signal;
+  Q1 <= Q0;
+  send_pulse <= Q0 and not Q1;
+  end if;
+end process;
+
 keyboard_inst : ps2_keyboard_to_ascii
   GENERIC MAP(
-      clk_freq                  => 50_000_000,      --system clock frequency in Hz
-      ps2_debounce_counter_size => 8                --set such that 2^size/clk_freq = 5us (size = 8 for 50MHz)
+      clk_freq                  => 125_000_000,      --system clock frequency in Hz
+      ps2_debounce_counter_size => 9              --set such that 2^size/clk_freq = 5us (size = 8 for 50MHz)
       )               
   PORT MAP(
       clk        => clk,                            --system clock input
@@ -181,7 +189,7 @@ keyboard_inst : ps2_keyboard_to_ascii
       clk         => clk,
       sys_reset_n => reset_n_i,
       init_done   => init_done,
-      rx_dv       => ascii_new_signal,   -- direct from PS2, no UART
+      rx_dv       => send_pulse,   -- direct from PS2, no UART
       rx_byte     => ascii_code_signal,  -- direct from LUT, no UART
       i2c_busy    => i2c_busy,
       i2c_enable  => disp_enable,
@@ -208,7 +216,7 @@ keyboard_inst : ps2_keyboard_to_ascii
 
   U_I2C: i2c_manager
     GENERIC MAP(
-      input_clk => 50_000_000,
+      input_clk => 125_000_000,
       bus_clk   => 100_000
     )
     PORT MAP(
