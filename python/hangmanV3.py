@@ -30,13 +30,13 @@ def play_round(ser, chosen_word: str, stages):
 
     while not end_of_game:
         print(f"\nLives remaining: {lives}")
-        if guessed_wrong:  \
+        if guessed_wrong:
             print(f"Wrong guesses: {' '.join(guessed_wrong).upper()}")
         disp(" ".join(display), "".join(guessed_wrong), lives, ser)
         guess = ps2in("Guess a letter: ", ser).lower()
         if not guess.isalpha():
             continue
-        if guess in display or guess in guessed_wrong: \
+        if guess in display or guess in guessed_wrong:
             print(f"You've already guessed {guess}")
             continue
         if guess in chosen_word:
@@ -101,3 +101,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+
